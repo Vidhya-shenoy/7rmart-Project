@@ -13,8 +13,8 @@ public class ManageFooterPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-footertext'  and  @class='small-box-footer']")
-	private WebElement managefooterext;
+	//@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-footertext'  and  @class='small-box-footer']")
+	//private WebElement managefooterext;
 	@FindBy(xpath = "//i[@class='fas fa-edit']")
 	private WebElement actionbutton;
 	@FindBy(xpath = "//textarea[@id='content']")
@@ -29,32 +29,37 @@ public class ManageFooterPage {
 	private WebElement alertbox;
 
 
-public void clickTheManagefooterTextMoreInfo() {
-	managefooterext.click();
-}
+//public void clickTheManagefooterTextMoreInfo() {
+	//managefooterext.click();
+//}
 
-public void clickTheActionButton() {
+public ManageFooterPage clickTheActionButton() {
 	actionbutton.click();
+	return this;
 }
 
-public void clearandenteraddress(String address1) {
+public ManageFooterPage clearandenteraddress(String address1) {
 	address.clear();
 	address.sendKeys(address1);
+	return this;
 }
-public void enterEmail(String emailid)
+public ManageFooterPage enterEmail(String emailid)
 {
 	email.clear();
 	email.sendKeys(emailid);
+	return this;
 }
-public void enterphonenumber(String phoneno)
+public ManageFooterPage enterphonenumber(String phoneno)
 {
 	phone.clear();
 	phone.sendKeys(phoneno);
+	return this;
 }
 
 
-public void clickTheUpdateButton() {
+public ManageFooterPage clickTheUpdateButton() {
 	update.click();
+	return this;
 }
 
 public boolean isAlertDisplayed() {

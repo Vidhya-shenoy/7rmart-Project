@@ -16,7 +16,7 @@ public class AdminUsersPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin'and@class='small-box-footer']") private WebElement admoreinfo;
+	
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']") private WebElement adnewbutton;
 	@FindBy(xpath="//input[@id='username']") private WebElement adusernamefield;
 	@FindBy(xpath="//input[@id='password']") private WebElement adpasswordfield;
@@ -25,35 +25,36 @@ public class AdminUsersPage {
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']") private WebElement adgreenalert;
 	@FindBy(xpath="//i[@class='fa fa-save']") private WebElement adsavebutton2;
 	
-	public void clickOnMoreInfo()
-	{
-		admoreinfo.click();
-	}
 	
-	public void clickOnNewButton()
+	public AdminUsersPage  clickOnNewButton()
 	{
 		adnewbutton.click();
+		return this;
 	}
 	
-	public void enterNewUserName(String newusernamevalue)
+	public AdminUsersPage  enterNewUserName(String newusernamevalue)
 	{
 		adusernamefield.sendKeys(newusernamevalue);
+		return this;
 	}
 	
-	public void enterNewPassWord(String newpasswordvalue)
+	public AdminUsersPage  enterNewPassWord(String newpasswordvalue)
 	{
 		adpasswordfield.sendKeys(newpasswordvalue);
+		return this;
 	}
 	
-	public void selectUserType()
+	public AdminUsersPage  selectUserType()
 	{
 		Select select= new Select(adusertypefield);
 		select.selectByIndex(4);
+		return this;
 	}
 	
-	public void clickOnSaveButton()
+	public AdminUsersPage  clickOnSaveButton()
 	{
 		adsavebutton.click();
+		return this;
 	}
 	
 	public boolean isGreenAlertDisplayed()

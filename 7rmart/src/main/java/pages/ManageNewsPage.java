@@ -14,8 +14,8 @@ public class ManageNewsPage {
 
 }
 	
-	@FindBy(xpath ="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news']")
-	private WebElement newsMoreInfo;
+	//@FindBy(xpath ="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news']")
+	//private WebElement newsMoreInfo;
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']")
 	private WebElement newNews;
 	@FindBy(xpath="//textarea[@id='news']")
@@ -24,21 +24,24 @@ public class ManageNewsPage {
 	private WebElement clickSave;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	private WebElement alertBox;
-	public void clickManageNewsInfo()
-	{
-		newsMoreInfo.click();
-	}
-public void clickManageNewsNewButton()
+	//public void clickManageNewsInfo()
+	//{
+	//	newsMoreInfo.click();
+	//}
+public ManageNewsPage clickManageNewsNewButton()
 {
 	newNews.click();
+	return this;
 }
-public void enterTheNews(String news)
+public ManageNewsPage enterTheNews(String news)
 {
 	enterNews.sendKeys(news);
+	return this;
 }
-public void clickTheSaveButton()
+public ManageNewsPage  clickTheSaveButton()
 {
 	clickSave.click();
+	return this;
 }
 public boolean isAlertDisplayed()
 {

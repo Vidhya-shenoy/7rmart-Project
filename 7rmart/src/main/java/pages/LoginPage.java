@@ -23,19 +23,22 @@ public LoginPage(WebDriver driver)
 	private WebElement dashboard;
 	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")
     private WebElement alertbox; 
-	public void enterUsername(String usernamevalue) 
+	public LoginPage enterUsername(String usernamevalue) 
 	{
 		usernameField.sendKeys(usernamevalue);
+		return this;
 	}
 
-	public void enterPassword(String passwordvalue)
+	public LoginPage enterPassword(String passwordvalue)
 	{
 		password.sendKeys(passwordvalue);
+		return this;
 	}
 
-	public void clickOnSignInButton()
+	public LogoutPage clickOnSignInButton()
 	{
 		submit.click();
+		return new LogoutPage(driver);
 	}
 
 	public boolean isDashboardLoaded()

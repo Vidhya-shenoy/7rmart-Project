@@ -26,22 +26,26 @@ public class ManageContactPage {
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	private WebElement greenalertbox;
 	
-	public void clickTheManageContact() {
-		managecontact.click();
-	}
-	public void clickTheEditButton() {
+	//public void clickTheManageContactMoreInfo() {
+		//managecontact.click();
+	//}
+	public ManageContactPage clickTheEditButton() {
 		editbutton.click();
+		return this;
 	}
-	public void enterThePhoneNumber(String phone) {
+	public ManageContactPage enterThePhoneNumber(String phone) {
 		phonenumber.clear();
 		phonenumber.sendKeys(phone);
+		return this;
 	}
-	public void enterTheDeliveryTime(String delivery_time) {
+	public ManageContactPage enterTheDeliveryTime(String delivery_time) {
 		deliverytime.clear();
 		deliverytime.sendKeys(delivery_time);
+		return this;
 	}
-	public void clickUpdateButton() {
+	public ManageContactPage clickUpdateButton() {
 		updatebutton.click();
+		return this;
 		}
 	public boolean isAlertDisplayed()
 	{

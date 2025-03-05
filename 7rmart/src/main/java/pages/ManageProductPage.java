@@ -11,16 +11,13 @@ public ManageProductPage(WebDriver driver) {
 	this.driver=driver;
 	PageFactory.initElements(driver, this);
 	}
-@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-product' and @class='small-box-footer']")
-private WebElement manageproductinfo;
+
 @FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/Product/delete?del=488&page_ad=1']")
 private WebElement deletebutton;
 @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 private WebElement alertbox;
 
-public void clickTheManageProductInfo() {
-	manageproductinfo.click();
-}
+
 
 public void clickThedeleteButton() {
 	deletebutton.click();

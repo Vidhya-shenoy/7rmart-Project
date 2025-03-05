@@ -23,8 +23,7 @@ public class ManageSubCategoryPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-sub-category' and @class='small-box-footer']")
-	private WebElement moreinfo;
+	
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/Subcategory/add']")
 	private WebElement newbutton;
 	@FindBy(xpath = "//select[@id='cat_id']")
@@ -38,35 +37,37 @@ public class ManageSubCategoryPage {
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	private WebElement Green_alertbox;
 
-	public void clickTheSubCategoryMoreInfo() {
-		moreinfo.click();
-	}
-
-	public void clickTheNew_Button() {
+	
+	public ManageSubCategoryPage clickTheNew_Button() {
 		newbutton.click();
+		return this;
 	}
 
-	public void selectcategory_Dropdown(){
+	public ManageSubCategoryPage selectcategory_Dropdown(){
 	 Select select=new Select(category);
 	 select.selectByVisibleText("Electronics");
+	return this;
 	
 	}
-	public void enterSubcategory(String subcategory){
+	public ManageSubCategoryPage enterSubcategory(String subcategory){
 		sub_category.sendKeys(subcategory);
+		return this;
 			
 	}
 	
-	public void uploadTheImage() throws AWTException{
+	public ManageSubCategoryPage uploadTheImage() throws AWTException{
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", image_upload);
 		
 		FileUploadUtility fileuploadutility_sendkeys=new FileUploadUtility();
 		fileuploadutility_sendkeys.fileUploadUsingRobotClass(image_upload, Constants.ImageUpload);
+		return this;
 	}
 		
-	public void clickTheSaveButton() {
+	public ManageSubCategoryPage clickTheSaveButton() {
 		savebutton.click();
+		return this;
 	}
 	public boolean isGreenAlertboxDispalyed()
 	{

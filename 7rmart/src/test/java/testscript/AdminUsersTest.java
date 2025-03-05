@@ -3,6 +3,7 @@ package testscript;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constants.Constants;
 import pages.AdminUsersPage;
 import pages.LoginPage;
 
@@ -22,14 +23,14 @@ public class AdminUsersTest extends Base {
 		loginpage.clickOnSignInButton();
 		
 		AdminUsersPage adminuserspage= new AdminUsersPage(driver);
-		adminuserspage.clickOnMoreInfo();
+		//adminuserspage.clickOnMoreInfoAdminPage();
 		adminuserspage.clickOnNewButton();
 		adminuserspage.enterNewUserName(newusernamevalue);
 		adminuserspage.enterNewPassWord(newpasswordvalue);
 		adminuserspage.selectUserType();
 		adminuserspage.clickOnSaveButton();
 		Boolean isalertdisplayed= adminuserspage.isGreenAlertDisplayed();
-		Assert.assertTrue(isalertdisplayed);
+		Assert.assertTrue(isalertdisplayed,Constants.ADMINUSER);
 		
 	}
 	
@@ -45,7 +46,7 @@ public class AdminUsersTest extends Base {
 		loginpage.clickOnSignInButton();
 		
 		AdminUsersPage adminuserspage= new AdminUsersPage(driver);
-		adminuserspage.clickOnMoreInfo();
+		//adminuserspage.clickOnMoreInfoAdminPage();
 		adminuserspage.clickOnNewButton();
 		adminuserspage.isSaveButtonDisplayed();
 		

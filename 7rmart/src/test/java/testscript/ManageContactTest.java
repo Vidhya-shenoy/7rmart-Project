@@ -5,11 +5,15 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constants.Constants;
 import pages.LoginPage;
+import pages.LogoutPage;
 import pages.ManageContactPage;
 import utilities.ExcelUtility;
 
 public class ManageContactTest extends Base {
+	LogoutPage logoutpage;
+	ManageContactPage managecontactpage;
 	@Test(retryAnalyzer=retry.Retry.class,description="Test to check whether the  User is able to change Phonenumber And DeliveryTime SUCCESSFULLY")
 public void verifyThatUserIsAbleToChangePhonenumberAndDeliveryTime() throws IOException {
 	{
@@ -19,18 +23,18 @@ public void verifyThatUserIsAbleToChangePhonenumberAndDeliveryTime() throws IOEx
 		String delivrytime=ExcelUtility.getIntegerData(1, 1, "Manage_Contact");
 		
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsername(username);
-		loginpage.enterPassword(passwordvalue);
-		loginpage.clickOnSignInButton();
+		loginpage.enterUsername(username).enterPassword(passwordvalue).clickOnSignInButton();
+		//loginpage.enterPassword(passwordvalue);
+		//loginpage.clickOnSignInButton();
 		
-		ManageContactPage managecontact=new ManageContactPage(driver);
-		managecontact.clickTheManageContact();
-		managecontact.clickTheEditButton();
-		managecontact.enterThePhoneNumber(phoneno);
-		managecontact.enterTheDeliveryTime(delivrytime);
-		managecontact.clickUpdateButton();
-		boolean isAlertmessageDisplayed=managecontact.isAlertDisplayed();
-		Assert.assertTrue(isAlertmessageDisplayed);
+		//ManageContactPage managecontact=new ManageContactPage(driver);
+		managecontactpage=logoutpage.clickTheManageContactMoreInfo();
+		managecontactpage.clickTheEditButton().enterThePhoneNumber(phoneno).enterTheDeliveryTime(delivrytime).clickUpdateButton();
+		//managecontact.enterThePhoneNumber(phoneno);
+		//managecontactpage.enterTheDeliveryTime(delivrytime);
+		//managecontactpage.clickUpdateButton();
+		boolean isAlertmessageDisplayed=managecontactpage.isAlertDisplayed();
+		Assert.assertTrue(isAlertmessageDisplayed, Constants.MANAGECONTACTEDIT);
 	}
 	}
    
@@ -47,8 +51,8 @@ public void verifyThatUserIsAbleToChangePhonenumberAndDeliveryTime() throws IOEx
 		loginpage.clickOnSignInButton();
 		
 		ManageContactPage managecontact=new ManageContactPage(driver);
-		managecontact.clickTheManageContact();
-		managecontact.clickTheEditButton();
+		managecontactpage=logoutpage.clickTheManageContactMoreInfo();
+		managecontactpage.clickTheEditButton().clickUpdateButton();
 		//managecontact.clickUpdateButton();
 		boolean isupdatebuttonEnabled = managecontact.isUpdateButtonDisplayed();
 		Assert.assertTrue(isupdatebuttonEnabled);

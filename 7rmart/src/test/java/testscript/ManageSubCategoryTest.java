@@ -6,13 +6,17 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constants.Constants;
 import pages.LoginPage;
+import pages.LogoutPage;
 import pages.ManageSubCategoryPage;
 import utilities.ExcelUtility;
 
 
 
 public class ManageSubCategoryTest extends Base {
+	 LogoutPage logout;
+	 ManageSubCategoryPage managesubcategorypage;
 @Test(retryAnalyzer=retry.Retry.class,description="Test to check whether the  User is able to add products in ManageSubCategory Successfully")	
 public void verifyThatManageCategorycandelete() throws IOException, AWTException {
 		
@@ -23,19 +27,19 @@ public void verifyThatManageCategorycandelete() throws IOException, AWTException
 		
 		
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterUsername(username);
+		loginpage.enterUsername(username).enterPassword(passwordvalue);
 		loginpage.enterPassword(passwordvalue);
-		loginpage.clickOnSignInButton();
 		
-		ManageSubCategoryPage managesubcategorypage= new ManageSubCategoryPage(driver);
-		managesubcategorypage.clickTheSubCategoryMoreInfo();
-		managesubcategorypage.clickTheNew_Button();
-		managesubcategorypage.selectcategory_Dropdown();
-		managesubcategorypage.enterSubcategory(subcategory1);
-		managesubcategorypage.uploadTheImage();
-		managesubcategorypage.clickTheSaveButton();
+		
+		//ManageSubCategoryPage managesubcategorypage= new ManageSubCategoryPage(driver);
+		managesubcategorypage=logout.clickTheSubCategoryMoreInfo();
+		managesubcategorypage.clickTheNew_Button().selectcategory_Dropdown().enterSubcategory(subcategory1).uploadTheImage().clickTheSaveButton();
+		//managesubcategorypage.selectcategory_Dropdown();
+		//managesubcategorypage.enterSubcategory(subcategory1);
+		//managesubcategorypage.uploadTheImage();
+		//managesubcategorypage.clickTheSaveButton();
 		boolean isGreenalertmessageDispalyed=managesubcategorypage.isGreenAlertboxDispalyed();
-		Assert.assertTrue(isGreenalertmessageDispalyed);
+		Assert.assertTrue(isGreenalertmessageDispalyed,Constants.MANAGESUBCATEGORY);
 		
 
 }

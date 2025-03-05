@@ -1,6 +1,9 @@
 package testscript;
 
 import org.testng.annotations.Test;
+
+import constants.Constants;
+
 import org.testng.AssertJUnit;
 
 import java.io.IOException;
@@ -21,7 +24,7 @@ public class LoginTest extends Base {
 	loginpageobject.enterPassword(passwordvalue);
 	loginpageobject.clickOnSignInButton();
 	boolean ishomepageavailable =loginpageobject.isDashboardLoaded();//boolean variable=ishomepageavailable
-	Assert.assertTrue(ishomepageavailable);//boolean variable passed to assertTrue method
+	Assert.assertTrue(ishomepageavailable, Constants.LOGIN);//boolean variable passed to assertTrue method
 }
 	@Test
 	public void verifyTheUserIsAbleToLoginUsingValidUsernameInvalidPassword()
